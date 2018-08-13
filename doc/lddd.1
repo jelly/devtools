@@ -1,0 +1,27 @@
+.Dd August 13, 2018
+.\"  Patch this in our groff's mdoc.local
+.ds volume-operating-system Arch Linux
+.ds default-operating-system Arch Linux
+.Os Arch Linux
+.Dt lddd 1
+.Sh NAME
+.Nm lddd
+.Nd find broken library links on your machine
+.Sh SYNOPSIS
+.Nm lddd
+.Sh DESCRIPTION
+lddd scans all elf binaries in $PATH, /lib, /usr/local/lib or specified in
+/etc/ld.so.conf.d/*.conf, looks for missing symbols and suggests which packages
+might need to be rebuild. The collected data is written to a temporary
+directory created by mktemp.
+.Sh SEE ALSO
+.Xr ldd 1
+.Sh BUGS
+Bugs? You must be kidding; there are no bugs in this software. But if we happen
+to be wrong, send us an email with as much detail as possible to
+arch-projects@archlinux.org
+.Sh AUTHORS
+.An Aaron Griffin <aaronmgriffin@gmail.com>
+.An Pierre Schmitz <pierre@archlinux.de>
+.An Lukas Fleischer <archlinux@cryptocrack.de>
+.An Luke Shumaker <lukeshu@parabola.nu>

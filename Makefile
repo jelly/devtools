@@ -60,6 +60,9 @@ BASHCOMPLETION_LINKS = \
 	archco \
 	communityco
 
+MAN1_PAGES = \
+	lddd.1
+
 all: $(BINPROGS) bash_completion zsh_completion
 
 edit = sed -e "s|@pkgdatadir[@]|$(DESTDIR)$(PREFIX)/share/devtools|g"
@@ -78,6 +81,7 @@ clean:
 install:
 	install -dm0755 $(DESTDIR)$(PREFIX)/bin
 	install -dm0755 $(DESTDIR)$(PREFIX)/share/devtools
+	install -dm0755 $(DESTDIR)$(PREFIX)/share/man/man1
 	install -m0755 ${BINPROGS} $(DESTDIR)$(PREFIX)/bin
 	install -m0644 ${CONFIGFILES} $(DESTDIR)$(PREFIX)/share/devtools
 	for l in ${COMMITPKG_LINKS}; do ln -sf commitpkg $(DESTDIR)$(PREFIX)/bin/$$l; done
@@ -88,6 +92,7 @@ install:
 	for l in ${BASHCOMPLETION_LINKS}; do ln -sf devtools $(DESTDIR)/usr/share/bash-completion/completions/$$l; done
 	install -Dm0644 zsh_completion $(DESTDIR)$(PREFIX)/share/zsh/site-functions/_devtools
 	ln -sf archco $(DESTDIR)$(PREFIX)/bin/communityco
+	for m in ${MAN1_PAGES}; do install -m644 doc/$$m $(DESTDIR)$(PREFIX)/share/man/man1/$$m; done
 
 uninstall:
 	for f in ${BINPROGS}; do rm -f $(DESTDIR)$(PREFIX)/bin/$$f; done

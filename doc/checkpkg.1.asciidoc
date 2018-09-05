@@ -1,0 +1,23 @@
+checkpkg(1)
+===========
+
+Name
+----
+checkpkg - Compare the current build package with the repository version
+
+Synopsis
+--------
+checkpkg
+
+Description
+-----------
+
+This should be run from a directory containing a PKGBUILD. It searches for a
+locally built package corresponding to the PKGBUILD, and downloads the last
+version of that package from the Pacman repositories. It then compares the list
+of .so files provided by each version of the package and outputs if there are
+soname differences for the new package. A directory is also created using
+mktemp with files containing a file list for both packages and a library list
+for both packages.
+
+include::footer.asciidoc[]
